@@ -24,3 +24,5 @@ El Event Loop sigue ciertas reglas:
 - Por una última vez en el mismo ciclo, los microtask queues son ejecutados de la misma forma, nextTick y luego promise queue.
 
 [Ver más](https://builder.io/blog/visual-guide-to-nodejs-event-loop).
+
+Para el versionamiento de nuestro proyecto tenemos: `1.0.0` donde el primer numero equivale a versiones mayores, el segundo a nuevas características o features y el último a bug fixes.
