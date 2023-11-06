@@ -96,3 +96,51 @@ npm install -D rimraf
    "start": "npm run build && node dist/app.js"
 }
 ```
+
+
+# Librerías para pruebas
+
+Hay 3 opciones muy buenas, estas son Jest, Mocha y Jasmine.
+
+
+# Pasos para configurar Jest con TypeScript, en Node 
+
+Documentación [oficial sobre Jest](https://jestjs.io/docs/getting-started)
+
+
+1. Instalaciones de desarrollo (super test es útil para probar Express)
+
+```bash
+npm install -D jest @types/jest ts-jest supertest
+```
+
+2. Crear archivo de configuración de Jest
+
+```bash
+npx jest --init
+```
+
+3. En el archivo **jest.config.js** configurar
+
+```json
+preset: 'ts-jest',
+testEnvironment: "jest-environment-node",
+
+// Opcional - The paths to modules that run some code to configure or set up the testing environment before each test
+// setupFiles: ['dotenv/config'],
+```
+
+4. Crear scripts en el **package.json**
+
+```json
+"test": "jest",
+"test:watch": "jest --watch",
+"test:coverage": "jest --coverage",
+```
+
+5. Ignorar Jest en el **tsconfig.json**
+
+```json
+"include": ["src/**/*"],
+"exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+```

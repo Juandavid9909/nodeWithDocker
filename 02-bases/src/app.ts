@@ -1,4 +1,4 @@
-import { buildLogger } from "./plugins/logger.plugin";
+// import { buildLogger } from "./plugins/logger.plugin";
 
 // const { emailTemplate } = require("./js-foundation/01-template");
 // require("./js-foundation/02-destructuring");
@@ -7,10 +7,10 @@ import { buildLogger } from "./plugins/logger.plugin";
 // const { buildMakePerson } = require("./js-foundation/05-factory");
 // const getPokemonById = require("./js-foundation/06-promises");
 
-const logger = buildLogger("app.js");
+// const logger = buildLogger("app.js");
 
-logger.log("Hola mundo");
-logger.error("Esto es algo malo");
+// logger.log("Hola mundo");
+// logger.error("Esto es algo malo");
 
 
 // ! Referencia a la función factory y uso
