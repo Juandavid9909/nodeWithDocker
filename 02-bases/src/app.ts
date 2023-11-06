@@ -1,4 +1,4 @@
-const { buildLogger } = require("./plugins");
+import { buildLogger } from "./plugins/logger.plugin";
 
 // const { emailTemplate } = require("./js-foundation/01-template");
 // require("./js-foundation/02-destructuring");
