@@ -8,6 +8,7 @@ JavaScript es Blocking y Single-threaded, lo que quiere decir que ejecuta una co
 
 Libuv es lo que le permite a Node trabajar en tareas asíncronas, callbacks, etc.
 
+
 # Event Loop
 
 El Event Loop sigue ciertas reglas:
@@ -26,3 +27,13 @@ El Event Loop sigue ciertas reglas:
 [Ver más](https://builder.io/blog/visual-guide-to-nodejs-event-loop).
 
 Para el versionamiento de nuestro proyecto tenemos: `1.0.0` donde el primer numero equivale a versiones mayores, el segundo a nuevas características o features y el último a bug fixes.
+
+
+# Factory Functions
+
+Son funciones que retornan otras funciones, buena opción para tener aplicaciones mantenibles y escalables.
+
+
+# Patrón adaptador
+
+Nos permite tener una capa de protección con paquetes de terceros, nos permite crear nuestro propio código que adapta una dependencia de terceros para que nuestro código no dependa de ellos.
