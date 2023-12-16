@@ -46,27 +46,27 @@ Más información - [Docs Oficiales](https://nodejs.dev/en/learn/nodejs-with-typ
 1. Instalar TypeScript y tipos de Node, como dependencia de desarrollo
 
 ```bash
-npm  i  -D  typescript  @types/node
+npm i -D typescript @types/node
 ```
 
 2. Inicializar el archivo de configuración de TypeScript ( Se puede configurar al gusto)
 
 ```bash
-npx  tsc  --init  --outDir  dist/  --rootDir  src
+npx tsc --init --outDir dist/ --rootDir src
 ```
 
 3.  **Opcional** - Para traspilar el código, se puede usar este comando
 
 ```bash
-npx  tsc
+npx tsc
 
-npx  tsc  --watch
+npx tsc --watch
 ```
 
 4. Configurar Nodemon y Node-TS
 
 ```bash
-npm  install  -D  ts-node  nodemon
+npm install -D ts-node nodemon
 ```
 
 5. Crear archivo de configuración de Nodemon - **nodemon.json**
@@ -116,13 +116,13 @@ Documentación [oficial sobre Jest](https://jestjs.io/docs/getting-started)
 1. Instalaciones de desarrollo (super test es útil para probar Express)
 
 ```bash
-npm  install  -D  jest  @types/jest  ts-jest  supertest
+npm install -D jest @types/jest ts-jest supertest
 ```
 
 2. Crear archivo de configuración de Jest
 
 ```bash
-npx  jest  --init
+npx jest --init
 ```
 
 3. En el archivo **jest.config.js** configurar
