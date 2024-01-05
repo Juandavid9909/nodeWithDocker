@@ -39,23 +39,40 @@ Son funciones que retornan otras funciones, buena opción para tener aplicacione
 Nos permite tener una capa de protección con paquetes de terceros, nos permite crear nuestro propio código que adapta una dependencia de terceros para que nuestro código no dependa de ellos.
 
 
+# Clean Architecture
+
+Una arquitectura limpia tiene en su primer nivel la base de datos, luego los presenters que es la app que ve el usuario, luego los use cases donde dividimos nuestro código en pequeñas tareas y las entidades, por ejemplo si hicieramos arquitectura limpia para una app de monitoreo todo se dividiría de la siguiente manera:
+
+- **Entities:** LogEntity para el nivel de severidad, mensaje del suceso y cuándo pasó.
+- ** Use Cases:** Grabar logs, leer logs por severidad o enviar el email.
+- **Presenters:** App de consola.
+- **DataBase:** FileSystem, MongoDB y PostgreSQL.
+
+Esta arquitectura no debería afectar si:
+
+- Cambiamos la base de datos.
+- Cambiamos el motor de correos.
+- Añadimos o eliminamos tareas.
+- Queremos trabajar con múltiples orígenes de datos.
+
+
 #  Pasos para usar Node con TypeScript con Nodemon
 
-Más información - [Docs Oficiales](https://nodejs.dev/en/learn/nodejs-with-typescript/)
+Más información - [Docs Oficiales](https://nodejs.dev/en/learn/nodejs-with-typescript/).
 
-1. Instalar TypeScript y tipos de Node, como dependencia de desarrollo
+1. Instalar TypeScript y tipos de Node, como dependencia de desarrollo.
 
 ```bash
 npm i -D typescript @types/node
 ```
 
-2. Inicializar el archivo de configuración de TypeScript ( Se puede configurar al gusto)
+2. Inicializar el archivo de configuración de TypeScript ( Se puede configurar al gusto).
 
 ```bash
 npx tsc --init --outDir dist/ --rootDir src
 ```
 
-3.  **Opcional** - Para traspilar el código, se puede usar este comando
+3.  **Opcional** - Para traspilar el código, se puede usar este comando.
 
 ```bash
 npx tsc
@@ -63,13 +80,13 @@ npx tsc
 npx tsc --watch
 ```
 
-4. Configurar Nodemon y Node-TS
+4. Configurar Nodemon y Node-TS.
 
 ```bash
 npm install -D ts-node nodemon
 ```
 
-5. Crear archivo de configuración de Nodemon - **nodemon.json**
+5. Crear archivo de configuración de Nodemon - **nodemon.json**.
 
 ```json
 {
@@ -80,7 +97,7 @@ npm install -D ts-node nodemon
 }
 ```
 
-6. Crear script para correr en desarrollo en el **package.json**
+6. Crear script para correr en desarrollo en el **package.json**.
 
 ```json
 "dev": "nodemon"
@@ -88,13 +105,13 @@ npm install -D ts-node nodemon
 "dev": "npx nodemon"  // En caso de no querer instalar nodemon
 ```
 
-7. Instalar rimraf (Herramienta que funciona similar al rm -f) eliminar directorio
+7. Instalar rimraf (Herramienta que funciona similar al rm -f) eliminar directorio.
 
 ```bash
 npm  install  -D  rimraf
 ```
 
-8. Crear scripts en el package.json para construir e iniciar en producción
+8. Crear scripts en el package.json para construir e iniciar en producción.
 
 ```json
 {
@@ -111,21 +128,21 @@ Hay 3 opciones muy buenas, estas son Jest, Mocha y Jasmine.
 
 #  Pasos para configurar Jest con TypeScript, en Node
 
-Documentación [oficial sobre Jest](https://jestjs.io/docs/getting-started)
+Documentación [oficial sobre Jest](https://jestjs.io/docs/getting-started).
 
-1. Instalaciones de desarrollo (super test es útil para probar Express)
+1. Instalaciones de desarrollo (super test es útil para probar Express).
 
 ```bash
 npm install -D jest @types/jest ts-jest supertest
 ```
 
-2. Crear archivo de configuración de Jest
+2. Crear archivo de configuración de Jest.
 
 ```bash
 npx jest --init
 ```
 
-3. En el archivo **jest.config.js** configurar
+3. En el archivo **jest.config.js** configurar.
 
 ```json
 preset: 'ts-jest',
@@ -136,14 +153,14 @@ testEnvironment: "jest-environment-node",
 // setupFiles: ['dotenv/config'],
 ```
 
-4. Crear scripts en el **package.json**
+4. Crear scripts en el **package.json**.
 ```json
 "test": "jest",
 "test:watch": "jest --watch",
 "test:coverage": "jest --coverage",
 ```
 
-5. Ignorar Jest en el **tsconfig.json**
+5. Ignorar Jest en el **tsconfig.json**.
 
 ```json
 "include": ["src/**/*"],
@@ -153,19 +170,19 @@ testEnvironment: "jest-environment-node",
 
 #  Node con TypeScript - Recomendado
 
-1. Instalar TypeScript y demás dependencias
+1. Instalar TypeScript y demás dependencias.
 
 ```bash
 npm i -D typescript @types/node ts-node nodemon rimraf
 ```
 
-2. Inicializar el archivo de configuración de TypeScript (Se puede configurar al gusto)
+2. Inicializar el archivo de configuración de TypeScript (Se puede configurar al gusto).
 
 ```bash
 npx tsc --init --outDir dist/ --rootDir src
 ```
 
-3. Crear archivo de configuración Nodemon - nodemon.json
+3. Crear archivo de configuración Nodemon - nodemon.json.
 
 ```json
 {
@@ -176,10 +193,33 @@ npx tsc --init --outDir dist/ --rootDir src
 }
 ```
 
-4. Crear scripts para dev, build y start
+4. Crear scripts para dev, build y start.
 
 ```json
 "dev": "nodemon",
 "build": "rimraf ./dist && tsc",
 "start": "npm run build && node dist/app.js"
+```
+
+
+# Node con TypeScript - TS-Node-dev (preferido)
+
+1. Instalar TypeScript y demás dependencias.
+
+```bash
+npm i -D typescript @types/node ts-node-dev rimraf
+```
+
+2. Inicializar el archivo de configuración de TypeScript ( Se puede configurar al gusto).
+
+```bash
+npx tsc --init --outDir dist/ --rootDir src
+```
+
+3. Crear scripts para dev, build y start ([Más sobre TS-Node-dev aquí](https://www.npmjs.com/package/ts-node-dev)).
+
+```json
+  "dev": "tsnd --respawn --clear src/app.ts",
+  "build": "rimraf ./dist && tsc",
+  "start": "npm run build && node dist/app.js"
 ```
