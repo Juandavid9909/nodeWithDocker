@@ -3,10 +3,12 @@ import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository.impl";
+import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 
-const fileSystemLogRepository = new LogRepositoryImpl(
-    new FileSystemDatasource()
+const logRepository = new LogRepositoryImpl(
+    // new FileSystemDatasource(),
+    new MongoLogDatasource(),
 );
 
 const emailService = new EmailService();
@@ -18,7 +20,7 @@ export class Server {
 
         // new SendEmailLogs(
         //     emailService,
-        //     fileSystemLogRepository
+        //     logRepository
         // ).execute(
         //     ["juandavid@mail.com", "juandavid2@mail.com"]
         // );
@@ -27,17 +29,17 @@ export class Server {
         //     ["juandavid@mail.com", "juandavid2@mail.com"]
         // );
 
-        // CronService.createJob(
-        //     "*/5 * * * * *",
-        //     () => {
-        //         const url = "https://google.com";
+        CronService.createJob(
+            "*/5 * * * * *",
+            () => {
+                const url = "https://google.com";
 
-        //         new CheckService(
-        //             fileSystemLogRepository,
-        //             () => console.log(`${ url } is ok`),
-        //             (error) => console.log(error)
-        //         ).execute(url);
-        //     }
-        // );
+                new CheckService(
+                    logRepository,
+                    () => console.log(`${ url } is ok`),
+                    (error) => console.log(error)
+                ).execute(url);
+            }
+        );
     }
 }
