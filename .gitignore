@@ -3,6 +3,7 @@ node_modules/
 *.log
 
 .env
+.env.test
 
 .DS_Store
 
@@ -11,7 +12,9 @@ dist/
 coverage/
 
 mongo/
+mongo-test/
 
 postgres/
+postgres-test/
 
 migrations/
