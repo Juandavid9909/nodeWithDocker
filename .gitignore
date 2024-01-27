@@ -11,3 +11,7 @@ dist/
 coverage/
 
 mongo/
+
+postgres/
+
+migrations/
