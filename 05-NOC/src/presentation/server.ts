@@ -44,17 +44,17 @@ export class Server {
         //     ["juandavid@mail.com", "juandavid2@mail.com"]
         // );
 
-        // CronService.createJob(
-        //     "*/5 * * * * *",
-        //     () => {
-        //         const url = "https://google.com";
+        CronService.createJob(
+            "*/5 * * * * *",
+            () => {
+                const url = "https://google.com";
 
-        //         new CheckServiceMultiple(
-        //             [fsLogRepository, mongoLogRepository, postgresLogRepository],
-        //             () => console.log(`${ url } is ok`),
-        //             (error) => console.log(error)
-        //         ).execute(url);
-        //     }
-        // );
+                new CheckServiceMultiple(
+                    [fsLogRepository, mongoLogRepository, postgresLogRepository],
+                    () => console.log(`${ url } is ok`),
+                    (error) => console.log(error)
+                ).execute(url);
+            }
+        );
     }
 }
