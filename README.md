@@ -44,7 +44,7 @@ Nos permite tener una capa de protección con paquetes de terceros, nos permite 
 Una arquitectura limpia tiene en su primer nivel la base de datos, luego los presenters que es la app que ve el usuario, luego los use cases donde dividimos nuestro código en pequeñas tareas y las entidades, por ejemplo si hicieramos arquitectura limpia para una app de monitoreo todo se dividiría de la siguiente manera:
 
 - **Entities:** LogEntity para el nivel de severidad, mensaje del suceso y cuándo pasó.
-- ** Use Cases:** Grabar logs, leer logs por severidad o enviar el email.
+- **Use Cases:** Grabar logs, leer logs por severidad o enviar el email.
 - **Presenters:** App de consola.
 - **DataBase:** FileSystem, MongoDB y PostgreSQL.
 
@@ -54,6 +54,17 @@ Esta arquitectura no debería afectar si:
 - Cambiamos el motor de correos.
 - Añadimos o eliminamos tareas.
 - Queremos trabajar con múltiples orígenes de datos.
+
+
+# Repository Pattern
+
+Con este patrón podemos crear un repositorio al que le podremos conectar Remote Data Sources (servicios web, SQL, FileSystem, etc). Todos estos Data Sources son consumidos por nuestro repositorio.
+
+- **Domain:** Todo lo que rige el dominio de mi empresa, todo lo que rige la aplicación (cómo va a funcionar, qué tipos de datos tendremos, etc).
+- **Entities:** Algo que ya va a terminar llegando a la base de datos. Es quien va a gobernar nuestra aplicación cuando queramos trabajar con nuestras entidades.
+- **Data Sources:** Va a contener los orígenes de datos (PostgreSQL, MySQL, MongoDB, etc).
+- **Repository:** Es el cómo vamos a llamar nuestro Data Source.
+- **Infrastructure:** Es como el intermediario entre Presentation y Domain para ejecutar las acciones que necesitemos.
 
 
 #  Pasos para usar Node con TypeScript con Nodemon
@@ -223,3 +234,8 @@ npx tsc --init --outDir dist/ --rootDir src
   "build": "rimraf ./dist && tsc",
   "start": "npm run build && node dist/app.js"
 ```
+
+
+# Glosario
+
+- **Middlewares:** Son funciones que se ejecutan en todo momento que se pasa por una ruta.
