@@ -236,6 +236,24 @@ npx tsc --init --outDir dist/ --rootDir src
 ```
 
 
+# Configurar Prisma
+
+```bash
+  npm i prisma --save-dev
+
+  npx prisma init --datasource-provider { tipoBD }
+
+  npx prisma migrate dev --name init
+```
+
+
+# Ejecutar Docker Compose
+
+```bash
+  docker compose up -d
+```
+
+
 # Glosario
 
 - **Middlewares:** Son funciones que se ejecutan en todo momento que se pasa por una ruta.
