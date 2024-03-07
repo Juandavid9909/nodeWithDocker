@@ -18,3 +18,5 @@ postgres/
 postgres-test/
 
 migrations/
+
+keys/
