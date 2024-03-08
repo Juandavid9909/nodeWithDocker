@@ -162,6 +162,8 @@ testEnvironment: "jest-environment-node",
 // Opcional - The paths to modules that run some code to configure or set up the testing environment before each test
 
 // setupFiles: ['dotenv/config'],
+// o si es archivo en raíz
+// setupFiles:['<rootDir>/setupTests.ts']
 ```
 
 4. Crear scripts en el **package.json**.
