@@ -5,7 +5,9 @@ import { LogModel } from "../../data/mongodb";
 export class MongoLogDatasource implements LogDatasource {
 
     public async saveLog(log: LogEntity): Promise<void> {
-        await LogModel.create(log);
+        const newLog = await LogModel.create(log);
+
+        console.log("Mongo Log created:", newLog.id);
     }
 
     public async getLogs(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
