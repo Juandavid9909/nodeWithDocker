@@ -7,7 +7,7 @@ export abstract class TodoRepository {
 
     public abstract getAll(): Promise<TodoEntity[]>;
 
-    public abstract getById(id: number): Promise<TodoEntity>;
+    public abstract findById(id: number): Promise<TodoEntity>;
 
     public abstract updateById(updateTodoDto: UpdateTodoDto): Promise<TodoEntity>;
 
