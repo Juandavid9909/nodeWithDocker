@@ -162,8 +162,6 @@ testEnvironment: "jest-environment-node",
 // Opcional - The paths to modules that run some code to configure or set up the testing environment before each test
 
 // setupFiles: ['dotenv/config'],
-// o si es archivo en raíz
-// setupFiles:['<rootDir>/setupTests.ts']
 ```
 
 4. Crear scripts en el **package.json**.
@@ -238,24 +236,43 @@ npx tsc --init --outDir dist/ --rootDir src
 ```
 
 
-# Configurar Prisma
+# JWT
 
-```bash
-  npm i prisma --save-dev
+Estos nos permiten realizar la autenticación de usuarios mediante JSON Web Tokens. La información y ejemplo se puede encontrar [aquí](https://jwt.io/).
 
-  npx prisma init --datasource-provider { tipoBD }
+Un JWT tiene 3 partes sumamente importantes:
 
-  npx prisma migrate dev --name init
-```
+- **Header:** Algoritmo que fue utilizado para la encriptación o hasheo de nuestro token.
+- **Payload:** Puede ser cualquier cosa (podemos almacenar la información que queramos aquí). Sin embargo, lo mejor es no guardar muchos datos.
+- **Verify signature:** Utilizado para firmar nuestro token, esto es lo que lo hace seguro. Esto contiene una llave secreta (semilla) para validar y estar seguros de que el token es válido.
 
+```javascript
+// Ejemplo
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
-# Ejecutar Docker Compose
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+const header = {
+	"alg": "HS256",
+	"typ": "JWT"
+};
 
-```bash
-  docker compose up -d
+// eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
+const payload = {
+	"sub": "1234567890",
+	"name": "John Doe",
+	"iat": 1516239022
+}};
+
+// SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+const verifySignature = HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  our256BitSecret
+);
 ```
 
 
 # Glosario
 
 - **Middlewares:** Son funciones que se ejecutan en todo momento que se pasa por una ruta.
+
