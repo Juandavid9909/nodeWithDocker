@@ -1,3 +1,8 @@
+# Notas
+
+Para seguir todos los pasos de arquitectura limpia, en los servicios deberíamos de utilizar casos de uso
+
+
 # Rest Project + TypeScript
 
 Este proyecto previamente inicializado tiene todo lo necesario para trabajar con TypeScript, Express y Rest.
