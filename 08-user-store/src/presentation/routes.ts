@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { AuthRoutes } from "./auth/routes";
-import { CategoryRoutes } from "./categories/routes";
+import { CategoryRoutes } from "./category/routes";
 
 export class AppRoutes {
 
