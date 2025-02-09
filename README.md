@@ -272,6 +272,21 @@ const verifySignature = HMACSHA256(
 ```
 
 
+# Webhooks
+
+Estos nos permiten detectar cambios en otro portal para realizar un proceso de forma automática sin depender del cliente, etc. Es importante implementar seguridad en nuestros Webhooks, se puede usar un Secret Token, una llave secreta, etc. Ya que esto nos permite indicarle al proveedor dicho Token, y obligar a que retorne la información con dicho Token, y si es así se puede procesar la información.
+
+Para implementar nuestros Webhooks debemos tener en cuenta lo siguiente:
+
+- Nunca compartir los secrets.
+- Deben de ser aleatorios seguros.
+- Sigue las recomendaciones de la documentación.
+- Nunca confíes en el anonimato.
+- La idea es la misma entre servicios.
+
+Para los Webhooks de GitHub, podemos ingresar al siguiente [link](https://docs.github.com/es/webhooks).
+
+
 # Glosario
 
 - **Middlewares:** Son funciones que se ejecutan en todo momento que se pasa por una ruta.
