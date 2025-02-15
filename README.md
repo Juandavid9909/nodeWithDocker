@@ -287,6 +287,16 @@ Para implementar nuestros Webhooks debemos tener en cuenta lo siguiente:
 Para los Webhooks de GitHub, podemos ingresar al siguiente [link](https://docs.github.com/es/webhooks).
 
 
+# Websockets
+
+Nos permiten tener una comunicación de doble vía entre el backend y el frontend mediante la emisión de eventos. La conexión a un Websocket no se hace mediante `http://`, se usa `ws://`
+
+
+## Broadcast
+
+Es lo que se utiliza para comunicar varios clientes entre sí.
+
+
 # Glosario
 
 - **Middlewares:** Son funciones que se ejecutan en todo momento que se pasa por una ruta.
